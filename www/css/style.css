@@ -1,0 +1,59 @@
+.Background {
+	background:url(../img/Background.jpg);
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	height: 900px;
+}
+
+.Logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	padding-top: 15%;
+}
+
+.Borde {
+	background-color: transparent;
+	border-radius: 5px;
+}
+
+.Mov {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	opacity: 0.9;
+}	
+
+.W {
+	width: 256px;
+	border-radius: 35px;
+}
+
+.GrayColor {
+	color: #5C1954;
+	opacity: 0.8;
+}
+
+.WhiteColor {
+	color:#833E7B;
+	opacity: 0.8;
+}
+
+.Op {
+	opacity: 0.9;
+}
+
+.Whi {
+	color: #FFFFFF;
+}
+
+.MaxTittle {
+	padding-top: 10%;
+	font-size: 22px;
+	color: #FFFFFF;
+	background-color: #FF6182;
+	height: 90px;
+}
