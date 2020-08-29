@@ -1,30 +1,45 @@
-<ion-view>
-	<ion-content>
-	<div class="Background">
-		<center>
-			<img class="Logo" src="img/MaxLogo.png" align="center">
-		</center>
-		<br/>
-		<br/>
-		<div>
-			<br>
-			<br>
-			<p class="text-center Op">CORREO</p>
-			<input type="text" class="Borde Mov" placeholder="Ingresa tu correo">
-			<hr color="gray" size=1>
-			<br>
-			<p class="text-center Op">CONTRASEÑA</p>
-			<input type="text" class="Borde Mov" placeholder="Ingresa tu contraseña">
-			<hr color="gray" size=1>
-			<br>
-			<br>
-			<br>
-			<button class="button button-large button-assertive Mov W">
- 			 INICIAR
-			</button>
-			<br>
-			<p class="text-center GrayColor">¿Aún no tienes cuenta? <strong><a class="WhiteColor" href="">Registrate</a></strong></p>
+
+<div class="container fondo">
+
+	<div class="row centrado ajuste">
+		<div class="col centrado">
+			<img src="img/logo.png" class="logo">
 		</div>
 	</div>
-	</ion-content>
-</ion-view>
+
+	<div class="row info letra mail">
+		<div class="col text-center">
+			<span>CORREO</span>
+			<input type="email" name="" placeholder="E M A I L" class="input text-center">
+		</div>
+	</div>
+
+	<div class="row info letra mail">
+		<div class="col text-center">
+			<span>CONTRASEÑA</span>
+			<input type="password" name="" placeholder="C O N T R A S E Ñ A" class="input text-center">
+		</div>
+	</div>
+
+	<div class="row centrado">
+		<div class="col centrado">
+			<div class="boton letra"><span>Iniciar</span>
+				<!--<ion-popover-view>
+    				<ion-header-bar>
+  						<h1 class="titleñ">Iniciar</h1>
+	 				</ion-header-bar>
+    				<ion-content class="centrado">
+      					HOLA jsjs!
+    				</ion-content>
+				</ion-popover-view> -->
+			</div>
+		</div>
+	</div>
+
+	<div class="row espacio">
+		<div class="col">
+			<span class="log" ui-sref="registro">¿Aún no tienes cuenta? &nbsp <b>Registrate</b> </span>
+		</div>
+	</div>
+	
+</div>

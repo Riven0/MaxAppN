@@ -1,0 +1,22 @@
+<!-- vista categoria de productos -->
+<ion-view view-title="productos">
+	<ion-content class="padding" style="background-color: black; background-size: cover; height: 100%">
+		<div class="container">
+			
+			<div class="row" style="text-align: center; margin-top: -20%; margin-bottom: 8%;">
+				<div class="col">
+					<img src="img/logo.png" height="100%" width="50%">
+				</div>
+			</div>
+
+			<div class="row" ng-repeat="x in Categorias" style="text-align: center; border-bottom: 0.5px solid white; color: white; display: flex; align-items: center; justify-content: center; padding: 6%; font-size: 20px;">
+				
+				<div class="col">
+					<span>{{x.nombre}}</span>
+				</div>
+
+			</div>
+
+		</div>
+	</ion-content>
+</ion-view>

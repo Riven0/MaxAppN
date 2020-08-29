@@ -1,14 +1,26 @@
-<ion-view view-title="Dashboard">
-  <ion-content class="padding">
-    <h2>Welcome to Ionic</h2>
-    <p>
-    This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the <a href="http://market.ionic.io/starters" target="_blank" rel="noopener">Ionic Market</a>.
-    </p>
-    <p>
-      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
-    </p>
-    <p>
-    If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank" rel="noopener">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank" rel="noopener">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
-    </p>
-  </ion-content>
+<ion-view view-title="Tiendas Max">
+	<ion-content class="padding">
+	<div class="container espaciado">
+		<div class="row espacio" ng-repeat= "c in Categorias">
+			<div class="col contenedor sinEs">
+				<div class="row">
+					<div class="col col-25 centrado alto">
+						<img src="{{c.imagen}}">
+					</div>
+					<div class="col">
+						<div class="row">
+							<div class="col titulos">{{c.nombreCategoria}}</div>
+						</div>
+						<div class="row">
+							<div class="col ajustedesc">{{c.descripcion}}</div>
+						</div>
+					</div>
+					<div class="col col-10 centrado" ng-click="viewProducts('{{c.nombreCategoria}}')">
+						<i class="fas fa-angle-right iconorig"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</ion-content>
 </ion-view>

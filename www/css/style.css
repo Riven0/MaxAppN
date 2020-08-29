@@ -1,59 +1,216 @@
-.Background {
-	background:url(../img/Background.jpg);
-	-webkit-background-size:cover;
-	-moz-background-size:cover;
-	-o-background-size:cover;
-	height: 900px;
+/* Empty. Add your own CSS if you like */
+.fondo {
+	background: url("../img/registro.jpg")center no-repeat;
+	background-size: cover;
+	height: 100%; 
+}
+.fondo:before {
+	content:'';
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+	background-color: rgba(0,0,0,0.5);
+}
+.titulo {
+	padding-bottom: 10%;
+	font-size: 20px;
+	position: relative;
+}
+.container {
+	padding-top: 27%;
+}
+.info span{
+	position: relative;
+	font-size: 15px;
+}
+.input {
+	font-family: 'Manrope', sans-serif;
+	font-size: 18px;
+	width: 100%;
+	border: 0;
+	border-bottom: 1px solid gray !important;
+	outline: none;
+	font-size: 20px !important;
+	color: #ffff !important;
+	background: transparent;
+	position: relative !important;
+	}
+	.mail {
+		padding-top: 5% !important;
+	}
+	.boton {
+		font-size: 16px;
+		font-weight: bolder;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 16px;
+		position: relative;
+		background-color: #eb4559;
+		width: 230px;
+		height: 36px;
+		margin-top: 12%;
+	}
+	.centrado {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+	}
+	.log {
+		color: gray;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.log b{
+		color: #ffff;
+	}
+.letra span{
+	color: #ffff !important;
+	font-family: 'Manrope', sans-serif;
 }
 
-.Logo {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 90%;
-	padding-top: 15%;
+/* Vista Login */
+.logo {
+	position: relative;
+	width: 250px;
+	height: 125px;
 }
-
-.Borde {
-	background-color: transparent;
-	border-radius: 5px;
-}
-
-.Mov {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	opacity: 0.9;
-}	
-
-.W {
-	width: 256px;
-	border-radius: 35px;
-}
-
-.GrayColor {
-	color: #5C1954;
-	opacity: 0.8;
-}
-
-.WhiteColor {
-	color:#833E7B;
-	opacity: 0.8;
-}
-
-.Op {
-	opacity: 0.9;
-}
-
-.Whi {
-	color: #FFFFFF;
-}
-
-.MaxTittle {
+.ajuste {
 	padding-top: 10%;
+}
+
+/* Vista Principal tutorial*/
+.fondotuto {
+	background: url("../img/principal.jpg")center no-repeat;
+	background-size: cover;
+	height: 100%;
+	font-family: 'Manrope', sans-serif;
+}
+.tutorial {
+	background-color: #FFFF;
+	margin-top: 500px;
+}
+.tutorial h3{
+	color: #E4E4E4;
+}
+.tutorial h1{
+	font-size: 20px;
+}
+/* tab dash  categorias o principal tiendas max*/
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+.title {
+	font-family: 'Montserrat', sans-serif !important;
+	color: #FFFF !important;
+	font-weight: bolder !important;
+}
+.principal {
+	background-color: #E7505E !important;
+}
+.contenedor {
+	background-color: #E1E1E1;
+	border-radius: 5px;
+	padding: 0;
+	height: 85px;
+}
+.espacio {
+	padding-bottom: 6%;
+}
+.sinEs {
+	padding: 0;
+}
+.centrado {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.alto {
+	height: 85px;
+}
+.ajustedesc {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 10px;
+}
+.titulos {
+	font-weight: bolder;
+	padding-bottom: 0;
+}
+.iconorig {
+	font-size: 34px;
+	color: #9D9D9D;
+	cursor: pointer;
+}
+.espaciado {
+	padding-top: 0px;
+}
+/* vista por categorias */
+.contend {
+	background-color: #FFFF;
+	border-radius: 5px;
+	padding: 0;
+	height: 100%;
+	margin-bottom: 10%;
+	border-bottom: 10%;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.line {
+	border-top: 0.5px solid black;
+}
+.Iconos{
+	color: #E0DEDE;
 	font-size: 22px;
-	color: #FFFFFF;
-	background-color: #FF6182;
-	height: 90px;
+}
+.corazon:hover{
+	color: black;
+}
+.carro:hover{
+	color: black;
+}
+.compartir:hover{
+	color: black;
+}
+.ajusteproducto {
+	padding: 12px;
+	margin-top: -10% !important;
+}
+.carouselajuste img{
+	width: 100%;
+	height: 225px !important;
+}
+.medida {
+	height: 225px;
+}
+.imgproduct img{
+	width: 100%;
+	height: 100%;
+}
+.carouselajuste h1{
+	color: #FFFF;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bolder;
+}
+.ajustecontend {
+	margin-top: 5%;
+}
+.precio {
+	margin: 0;
+}
+/* vista Carrito de compras */
+.carritoimg img{
+	width: 125px;
+	height: 100px;
+}
+.sinesp {
+	padding: 16px;
+}
+
+.espaciadoA {
+	padding-top:12px;
 }

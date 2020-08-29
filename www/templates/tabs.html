@@ -5,20 +5,25 @@ navigation history that also transitions its views in and out.
 -->
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
-  <!-- Dashboard Tab -->
-  <ion-tab title="Status" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/dash">
-    <ion-nav-view name="tab-dash"></ion-nav-view>
-  </ion-tab>
+	<!-- Dashboard Tab -->
+	<ion-tab title="Inicio" icon-off="fas fa-home" icon-on="fas fa-home" href="#/tab/dash">
+		<ion-nav-view name="tab-dash"></ion-nav-view>
+	</ion-tab>
 
-  <!-- Chats Tab -->
-  <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats">
-    <ion-nav-view name="tab-chats"></ion-nav-view>
-  </ion-tab>
+	<!-- Chats Tab -->
+	<ion-tab title="Carrito" icon-off="fab fa-shopify" icon-on="fab fa-shopify" href="#/tab/carrito">
+		<ion-nav-view name="tab-carrito"></ion-nav-view>
+	</ion-tab>
 
-  <!-- Account Tab -->
-  <ion-tab title="Account" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/account">
-    <ion-nav-view name="tab-account"></ion-nav-view>
-  </ion-tab>
+	<!-- Account Tab -->
+	<ion-tab title="Favoritos" icon-off="fas fa-heart" icon-on="fas fa-heart" href="#/tab/favoritos">
+		<ion-nav-view name="tab-favoritos"></ion-nav-view>
+	</ion-tab>
+
+	<!-- Account Tab -->
+	<ion-tab title="Perfil" icon-off="fas fa-user" icon-on="fas fa-user" href="#/tab/account">
+		<ion-nav-view name="tab-account"></ion-nav-view>
+	</ion-tab>
 
 
 </ion-tabs>

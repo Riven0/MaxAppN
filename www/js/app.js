@@ -8,88 +8,132 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs).
-    // The reason we default this to hidden is that native apps don't usually show an accessory bar, at
-    // least on iOS. It's a dead giveaway that an app is using a Web View. However, it's sometimes
-    // useful especially with forms, though we would prefer giving the user a little more room
-    // to interact with the app.
-    if (window.cordova && window.Keyboard) {
-      window.Keyboard.hideKeyboardAccessoryBar(true);
-    }
+	$ionicPlatform.ready(function() {
+		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+		// for form inputs).
+		// The reason we default this to hidden is that native apps don't usually show an accessory bar, at
+		// least on iOS. It's a dead giveaway that an app is using a Web View. However, it's sometimes
+		// useful especially with forms, though we would prefer giving the user a little more room
+		// to interact with the app.
+		if (window.cordova && window.Keyboard) {
+		  window.Keyboard.hideKeyboardAccessoryBar(true);
+		}
 
-    if (window.StatusBar) {
-      // Set the statusbar to use the default style, tweak this to
-      // remove the status bar on iOS or change it to use white instead of dark colors.
-      StatusBar.styleDefault();
-    }
-  });
+		if (window.StatusBar) {
+		  // Set the statusbar to use the default style, tweak this to
+		  // remove the status bar on iOS or change it to use white instead of dark colors.
+		  StatusBar.styleDefault();
+		}
+	});
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  $stateProvider
+	// Ionic uses AngularUI Router which uses the concept of states
+	// Learn more here: https://github.com/angular-ui/ui-router
+	// Set up the various states which the app can be in.
+	// Each state's controller can be found in controllers.js
+	$stateProvider
 
-  // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
+	//Estado vista Tutorial
 
-  // Each tab has its own nav history stack:
+	.state("tutorial",{
+		url:"/tutorial",
+		templateUrl:"templates/tutorial.html",
+		controller:"tutorialCtrl"
+	})
 
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
+	//Estado vista products mostrar productos al hacer click
 
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
+	.state("products",{
+		url: "/products",
+		templateUrl: "templates/products.html",
+		controller : "productsCtrl"
+	})
 
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  })
+	//Estado vista registro
 
-    .state("Category",{
-      url: "/Category",
-      templateUrl: "templates/Category.html",
-      controller: "CategoryCtrl"
-    });
+	.state("registro",{
+		url:"/registro",
+		templateUrl:"templates/register.html",
+		controller:"registroCtrl"
+	})
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/Category');
+	// Estado vista inicio
+
+	.state("login",{
+		url: "/login",
+		templateUrl: "templates/login.html",
+		controller:"loginCtrl"
+	})
+
+  	//Estado vista  productos
+	.state("productos",{
+		url: "/productos",
+		templateUrl: "templates/productos.html",
+		controller:"productosCtrl"
+	})
+
+  	// setup an abstract state for the tabs directive
+	.state('tab', {
+		url: '/tab',
+		abstract: true,
+		templateUrl: 'templates/tabs.html'
+	})
+
+  	// Each tab has its own nav history stack:
+
+	.state('tab.dash', {
+		url: '/dash',
+		views: {
+			'tab-dash': {
+				templateUrl: 'templates/tab-dash.html',
+				controller: 'DashCtrl'
+			}
+		}
+	})
+
+	.state('tab.carrito', {
+		url: '/carrito',
+		views: {
+			'tab-carrito': {
+				templateUrl: 'templates/tab-carrito.html',
+				controller: 'carritoCtrl'
+			}
+		}
+	})
+
+	.state('tab.chat-detail', {
+		url: '/chats/:chatId',
+		views: {
+			'tab-chats': {
+				templateUrl: 'templates/chat-detail.html',
+				controller: 'ChatDetailCtrl'
+			}
+		}
+	})
+
+	.state('tab.account', {
+		url: '/account',
+		views: {
+			'tab-account': {
+				templateUrl: 'templates/tab-account.html',
+				controller: 'AccountCtrl'
+			}	
+		}
+	})
+
+	.state("tab.favoritos", {
+		url: "/favoritos",
+		views: {
+			"tab-favoritos": {
+				templateUrl: "templates/favoritos.html",
+				controller: "favoritosCtrl"
+			}
+		}
+	})
+
+	// if none of the above states are matched, use this as the fallback
+	$urlRouterProvider.otherwise('/tab/dash');
 
 });
