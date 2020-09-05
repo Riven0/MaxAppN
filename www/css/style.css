@@ -210,7 +210,18 @@
 .sinesp {
 	padding: 16px;
 }
-
-.espaciadoA {
-	padding-top:12px;
+.sub {
+	padding: 0;
+}
+.not{
+	color: #E0DEDE;
+	font-size: 20px;
+	margin-top: 20%;
+}
+.not i{
+	font-size: 60px;
+}
+/* vista favoritos*/
+.espaciado{
+	padding-top: 20px;
 }

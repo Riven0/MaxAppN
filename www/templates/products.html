@@ -1,36 +1,35 @@
 <!-- Vista donde se muestran los productos ya filtrados -->
-<link rel="stylesheet" href="css/style2.css">
-
-<div class="container">
-	<div class="row">
-		<div class="col carouselajuste medida">
-			<ion-content scroll="false" class="medida">
-			 <ion-slides  options="options" slider="data.slider">
-			    <ion-slide-page class="carouselajuste medida">
-			      <div class="box blue"><img src="img/principal.jpg" height="225px"></div>
-			    </ion-slide-page>
-			    <ion-slide-page class="carouselajuste medida">
-			      <div class="box yellow"><img src="img/c2.jpg" height="225px"></div>
-			    </ion-slide-page>
-			    <ion-slide-page class="carouselajuste medida">
-			      <div class="box pink"><img src="img/c3.jpg" height="225px"></div>
-			    </ion-slide-page>
-			  </ion-slides>
-			</ion-content>
-		</div>
-	</div>
-</div>
-
-<div class="container ajusteproducto">
-
-	<div class="row contend" ng-repeat="x in lista | filter: nombreCategoria">
-		<div class="col centrado imgproduct">
-			<div>
-				<img src="{{x.imagen}}">
-				<p class="text-center precio"><span>Precio: Q.{{x.precio}}</span></p>
+<ion-view view-title="Comprar">
+	<ion-content>
+		<div class="container">
+			<div class="row">
+				<div class="col carouselajuste medida">
+					<ion-content scroll="false" class="medida">
+						<ion-slides  options="options" slider="data.slider">
+							<ion-slide-page class="carouselajuste medida">
+								<div class="box blue"><img src="img/principal.jpg" height="225px"></div>
+							</ion-slide-page>
+							<ion-slide-page class="carouselajuste medida">
+								<div class="box yellow"><img src="img/c2.jpg" height="225px"></div>
+							</ion-slide-page>
+							<ion-slide-page class="carouselajuste medida">
+								<div class="box pink"><img src="img/c3.jpg" height="225px"></div>
+							</ion-slide-page>
+						</ion-slides>
+					</ion-content>
+				</div>
 			</div>
+		</div>
+
+		<div class="container ajusteproducto">
+
+			<div class="row contend" ng-repeat="x in lista | filter: nombreCategoria">
+				<div class="col centrado imgproduct">
+					<div>
+						<img src="{{x.imagen}}">
+						<p class="text-center precio"><span>Precio: Q.{{x.precio}}</span></p>
 						<div class="row">
-							<div class="col">
+							<div class="col centrado">
 								<select ng-model="cantidad">
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -45,23 +44,26 @@
 								</select>
 							</div>
 						</div>
-		</div>
-		<div class="col col-60 ajustecontend">
-			<p>{{x.nombre}}</p>
-			<p><span style="font-weight: bolder;">Descripcion:</span> {{x.descripcion}}</p>
-			<p class="centrado">
-				<div class="row centrado Iconos line">
-					<div class="col centrado" ng-click="addFavoritos(x)">
-						<i class="fas fa-heart corazon"></i>
-					</div>
-					<div class="col centrado">
-						<i class="fas fa-cart-arrow-down carro" ng-click="agregar(x,cantidad)"></i>
-					</div>
-					<div class="col centrado">
-						<i class="fas fa-share-alt compartir"></i>
 					</div>
 				</div>
-			</p>
-		</div>
-	</div>
-</div>
+				<div class="col col-60 ajustecontend">
+					<p>{{x.nombre}}</p>
+					<p><span style="font-weight: bolder;">Descripcion:</span> {{x.descripcion}}</p>
+					<p class="centrado">
+						<div class="row centrado Iconos line">
+							<div class="col centrado" ng-click="addFavorites(x)">
+								<i class="fas fa-heart corazon"></i>
+							</div>
+							<div class="col centrado">
+								<i class="fas fa-cart-arrow-down carro" ng-click="agregar(x,cantidad)"></i>
+							</div>
+							<div class="col centrado">
+								<i class="fas fa-share-alt compartir"></i>
+							</div>
+						</div>
+					</p>
+				</div>
+			</div>
+		</div>		
+	</ion-content>
+</ion-view>

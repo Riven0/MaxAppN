@@ -67,13 +67,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 		controller:"loginCtrl"
 	})
 
-  	//Estado vista  productos
-	.state("productos",{
-		url: "/productos",
-		templateUrl: "templates/productos.html",
-		controller:"productosCtrl"
-	})
-
   	// setup an abstract state for the tabs directive
 	.state('tab', {
 		url: '/tab',
@@ -103,6 +96,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 		}
 	})
 
+	.state("tab.favoritos",{
+		url: "/favoritos",
+		views: {
+			"tab-favoritos": {
+				templateUrl: "templates/favoritos.html",
+				controller: "favoritosCtrl"
+			}
+		}
+	})
+
 	.state('tab.chat-detail', {
 		url: '/chats/:chatId',
 		views: {
@@ -121,17 +124,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 				controller: 'AccountCtrl'
 			}	
 		}
-	})
-
-	.state("tab.favoritos", {
-		url: "/favoritos",
-		views: {
-			"tab-favoritos": {
-				templateUrl: "templates/favoritos.html",
-				controller: "favoritosCtrl"
-			}
-		}
-	})
+	});
 
 	// if none of the above states are matched, use this as the fallback
 	$urlRouterProvider.otherwise('/tab/dash');

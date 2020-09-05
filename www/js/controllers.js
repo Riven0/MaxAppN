@@ -100,18 +100,22 @@ angular.module('starter.controllers', [])
 	$rootScope.carrito = [];
 	$rootScope.favoritos = [];
 	$rootScope.vista;
-	//Permite agregar productos al carrito
+	$rootScope.nada;
+	//Agrega Productos al Carrito
 	$scope.agregar = function(x,cantidad){
-		x["cantidad"]=cantidad;
+		x["cantidad"]=parseInt(cantidad);
 		$rootScope.carrito.push(x);
+			swal("SI", "Se agrego el producto", "success");
 		$rootScope.vista = true;
 		$rootScope.subtotal = $rootScope.carrito[0].precio * $rootScope.carrito[0].cantidad;
+		$rootScope.nada = false;
 	}
-	//Permite agregar productos al carrito
-	$scope.addFavoritos = function(y){
-		$rootScope.favoritos.push(y);
-		swal("Felicitaciones!","Su producto ha sido agregado a favoritos","success")
 
+	//Agregar Productos a Favoritos
+
+	$scope.addFavorites = function(y){
+		$rootScope.favoritos.push(y);
+		swal("SI", "Se agrego a favoritos", "success")
 	}
 
 	//carousel
@@ -194,14 +198,23 @@ angular.module('starter.controllers', [])
 
 })
 
-//nuevo controlador productos por categoria sin filtrar
+.controller('carritoCtrl', function($scope, Chats, $rootScope) {
+	
+	if($rootScope.favoritos == undefined){
+		$rootScope.vista = false;
+		$rootScope.nada = true;
+	}
 
-.controller('carritoCtrl', function($scope, $rootScope) {
+})
+
+//controlador favoritos
+.controller("favoritosCtrl", function($scope, $rootScope, $state){
 
 	if($rootScope.carrito == undefined){
-		$rootScope.vista = false
+		$rootScope.vista = false;
+		$rootScope.nada = true;
 	}
-	
+
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
@@ -212,8 +225,4 @@ angular.module('starter.controllers', [])
 	$scope.settings = {
 		enableFriends: true
 	};
-})
-
-.controller("favoritosCtrl", function($scope,$rootScope,$state){
-
-})
+});

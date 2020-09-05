@@ -11,20 +11,27 @@
 				</div>
 				<div class="row centrado">
 					<div class="col">
-						<p>{{x.nombre}}</p>
-							<p></p>
-							<i class="fas fa-heart corazon"></i>
-							<p>x{{x.cantidad}}</p>
+						<p class="centrado">{{x.nombre}}</p>
+						<p class="centrado"><i class="fas fa-heart corazon"></i></p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="container" ng-if="vista">
-						<div class="row">
-							<div class="col">
-								<span>Subtotal: {{subtotal}}</span>
-							</div>
-						</div>
-					</div>
+
+
+		<div class="container not" ng-if="nada">
+			<div class="row centrado">
+				<div class="col centrado">
+					<i class="fas fa-not-equal"></i>
+				</div>
+			</div>
+			<div class="row centrado">
+				<div class="col centrado">
+					<span>No hay elementos en Favoritos</span>
+				</div>
+			</div>
+		</div>
+
+
 	</ion-content>
 </ion-view>
