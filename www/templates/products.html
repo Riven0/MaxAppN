@@ -1,24 +1,19 @@
 <!-- Vista donde se muestran los productos ya filtrados -->
 <ion-view view-title="Comprar">
 	<ion-content>
-		<div class="container">
-			<div class="row">
-				<div class="col carouselajuste medida">
-					<ion-content scroll="false" class="medida">
-						<ion-slides  options="options" slider="data.slider">
-							<ion-slide-page class="carouselajuste medida">
-								<div class="box blue"><img src="img/principal.jpg" height="225px"></div>
-							</ion-slide-page>
-							<ion-slide-page class="carouselajuste medida">
-								<div class="box yellow"><img src="img/c2.jpg" height="225px"></div>
-							</ion-slide-page>
-							<ion-slide-page class="carouselajuste medida">
-								<div class="box pink"><img src="img/c3.jpg" height="225px"></div>
-							</ion-slide-page>
-						</ion-slides>
-					</ion-content>
+
+		<div class="container banner bannerajuste">
+
+			<div class="row banner" ng-repeat= "c in Categorias | filter: nombreCategoria">
+				<div class="col banner">
+					<img src="{{c.banner}}">
+					<div class="desc">
+						<h4 class="centrado">{{c.nombreCategoria}}</h4>
+						<span class="centrado">{{c.descripcion}}</span>
+					</div>
 				</div>
 			</div>
+
 		</div>
 
 		<div class="container ajusteproducto">

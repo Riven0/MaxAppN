@@ -13,7 +13,7 @@
 			    <ion-slide-page class="centrado">
 			      <div class="box blue">
 			      	<h1 class="text-center">Encuentra lo que buscas <p> fácil y rápido</h1>
-					<h3 ui-sref="login" class="centrado">Saltar</h3>
+					<h3 ui-sref="login" class="text-right">Saltar</h3>
 			      </div>
 			    </ion-slide-page>
 			    <ion-slide-page class="centrado">
@@ -26,29 +26,29 @@
 			</ion-content>
 		</div>
 
-		<script>
-
-			$scope.options = {
-			  loop: false,
-			  effect: 'fade',
-			  speed: 500,
-			}
-
-			$scope.$on("$ionicSlides.sliderInitialized", function(event, data){
-			  // data.slider is the instance of Swiper
-			  $scope.slider = data.slider;
-			});
-
-			$scope.$on("$ionicSlides.slideChangeStart", function(event, data){
-			  console.log('Slide change is beginning');
-			});
-
-			$scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
-			  // note: the indexes are 0-based
-			  $scope.activeIndex = data.slider.activeIndex;
-			  $scope.previousIndex = data.slider.previousIndex;
-			});
-		</script>
-
 	</div>
 </div>
+
+<script>
+	//Slider
+	$scope.options = {
+		loop: false,
+		effect: 'fade',
+		speed: 500,
+		}
+
+		$scope.$on("$ionicSlides.sliderInitialized", function(event, data){
+			// data.slider is the instance of Swiper
+			$scope.slider = data.slider;
+		});
+
+		$scope.$on("$ionicSlides.slideChangeStart", function(event, data){
+			console.log('Slide change is beginning');
+		});
+
+		$scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
+			// note: the indexes are 0-based
+			$scope.activeIndex = data.slider.activeIndex;
+			$scope.previousIndex = data.slider.previousIndex;
+		});
+</script>

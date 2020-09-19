@@ -1,12 +1,12 @@
 var firebaseConfig = {
-	apiKey: "AIzaSyCtzD_d6_Rc0SN9NSqXTDcYnjxqcUEYW5g",
-	authDomain: "maxapp-df7ce.firebaseapp.com",
-	databaseURL: "https://maxapp-df7ce.firebaseio.com",
-	projectId: "maxapp-df7ce",
-	storageBucket: "maxapp-df7ce.appspot.com",
-	messagingSenderId: "883374548975",
-	appId: "1:883374548975:web:4f11acaedd03d0e3efb81a",
-	measurementId: "G-PN5E88EJ6Z"
+    apiKey: "AIzaSyBdTRZxYr0jpoy8KuMEbl_yMwve7E1S21c",
+    authDomain: "maxapp-85793.firebaseapp.com",
+    databaseURL: "https://maxapp-85793.firebaseio.com",
+    projectId: "maxapp-85793",
+    storageBucket: "maxapp-85793.appspot.com",
+    messagingSenderId: "1044203467991",
+    appId: "1:1044203467991:web:f7adbaa64dae14ad4bec92",
+    measurementId: "G-NS789PQCZ4"
 	};
 	// Initialize Firebase
 	firebase.initializeApp(firebaseConfig);
@@ -16,79 +16,69 @@ var firebaseConfig = {
 angular.module('starter.controllers', [])
 
 //Controlador Para registro de usuario
-.controller("registroCtrl",function($scope){
-	$scope.obtener = function(user){
-	firebase.auth().createUserWithEmailAndPassword(user.email, user.contra).then(function a(y){
-		swal("se creo correctamente YEAH")
-			firebase.database().ref("/usuario").set()({
-				correo: user.email
+.controller("registroCtrl",function($scope, $state){
+	//cerrar sesion del  usuario
+	firebase.auth().signOut().then(function(){
+	}).catch(function(error){
+		var mensaje = error.message;
+		console.log(mensaje);
 	})
-	firebase.out().signout().then(function(){
-		// sign-out successful
+	//variable UID del usuario registrado
+	$scope.uid = "";
+
+	$scope.obtener = function(user){
+		//Crear usuario con la autenticacion
+		firebase.auth().createUserWithEmailAndPassword(user.email, user.contra).then(function a(y){
+			// Notificacion que se creo el usuario
+			swal("Tu usuario se ha creado correctamente");
+			//obteber uid del ususario refistrado
+			$scope.uid = y.user.uid;
+			//Almacena el ususrio en la base de datos
+			firebase.database().ref("/users").child($scope.uid).set({
+				correo: user.email,
+				nombre: user.nombre,
+				uid: $scope.uid
+			})
+		})
+
+		//cerrar sesion del  usuario
+		firebase.auth().signOut().then(function(){
 		}).catch(function(error){
-		// An error.
-		}); // hasta aqui
-		}).catch(function(error) {
-		// Handle Errors here.
-		var errorCode = error.code;
-		var errorMessage = error.message;
-		// ...
-		});
+			var mensaje = error.message;
+			console.log(mensaje);
+		})
+		//borra el contenido del formulario
+		$scope.user = {};
+		//re direccion al login
+		$state.go("login");
 	}
 })
 
+
 //Controlador vista inicio
-.controller("loginCtrl",function($scope, $ionicPopover){
-	//conectar app con facebook
-	$window.fbAsyncInit = function() {
-		FB.init({ 
-		appId: '657057955159871',
-		status: true, 
-		cookie: true, 
-		xfbml: true,
-		version: 'v2.4'
-	});
-};
+.controller("loginCtrl",function($scope, $state){
 
-	//popover
-	// .fromTemplate() method
-	  var template = '<ion-popover-view><ion-header-bar> <h1 class="title">Iniciar</h1> </ion-header-bar> <ion-content class="centrado"> HOLA jsjs! </ion-content></ion-popover-view>';
+	//cerrar sesion del  usuario
+	firebase.auth().signOut().then(function(){
+	}).catch(function(error){
+		var mensaje = error.message;
+		console.log(mensaje);
+	})
+	
+	$scope.Inicio = function(userL){
+		//Inicio de sesion con firebase
+		firebase.auth().signInWithEmailAndPassword(userL.email,userL.password).then(function b(x){
+			swal("BIENVENIDO");
+			$state.go("tab.dash")
+		}).catch(function(error){
+			var mensaje = error.message;
+			console.log(mensaje);
+		})
+	}
 
-	  $scope.popover = $ionicPopover.fromTemplate(template, {
-	    scope: $scope
-	  });
-
-	  // .fromTemplateUrl() method
-	  $ionicPopover.fromTemplateUrl('login.html', {
-	    scope: $scope
-	  }).then(function(popover) {
-	    $scope.popover = popover;
-	  });
-
-
-	  $scope.openPopover = function($event) {
-	    $scope.popover.show($event);
-	  };
-	  $scope.closePopover = function() {
-	    $scope.popover.hide();
-	  };
-	  //Cleanup the popover when we're done with it!
-	  $scope.$on('$destroy', function() {
-	    $scope.popover.remove();
-	  });
-	  // Execute action on hidden popover
-	  $scope.$on('popover.hidden', function() {
-	    // Execute action
-	  });
-	  // Execute action on remove popover
-	  $scope.$on('popover.removed', function() {
-	    // Execute action
-	  });
-	//});
 })
 
 //Controlador vista principal
-
 .controller("tutorialCtrl",function($scope){
 
 })
@@ -105,7 +95,7 @@ angular.module('starter.controllers', [])
 	$scope.agregar = function(x,cantidad){
 		x["cantidad"]=parseInt(cantidad);
 		$rootScope.carrito.push(x);
-			swal("SI", "Se agrego el producto", "success");
+			swal("SI", "Se ha agregado el producto", "success");
 		$rootScope.vista = true;
 		$rootScope.subtotal = $rootScope.carrito[0].precio * $rootScope.carrito[0].cantidad;
 		$rootScope.nada = false;
@@ -115,31 +105,10 @@ angular.module('starter.controllers', [])
 
 	$scope.addFavorites = function(y){
 		$rootScope.favoritos.push(y);
-		swal("SI", "Se agrego a favoritos", "success")
+		swal("SI", "Se ha agregado a favoritos", "success")
 	}
 
-	//carousel
-	$scope.options = {
-  		loop: false,
-	  	effect: 'fade',
-	  	speed: 500,
-	}
-
-		$scope.$on("$ionicSlides.sliderInitialized", function(event, data){
-		  // data.slider is the instance of Swiper
-		  $scope.slider = data.slider;
-		});
-
-		$scope.$on("$ionicSlides.slideChangeStart", function(event, data){
-		  console.log('Slide change is beginning');
-		});
-
-		$scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
-		  // note: the indexes are 0-based
-		  $scope.activeIndex = data.slider.activeIndex;
-		  $scope.previousIndex = data.slider.previousIndex;
-		});
-	})
+})
 
 //controlador vista de productos por categoria sin filtrar
 .controller('DashCtrl', function($scope,$rootScope, $state) {
@@ -160,32 +129,38 @@ angular.module('starter.controllers', [])
 		{
 			nombreCategoria : "TV y VIDEO",
 			imagen : "img/tag1.png",
-			descripcion:"Televisores, Audio y Reproductores."
+			descripcion:"Televisores, Audio y Reproductores.",
+			banner: "img/tele.jpg"
 		},
 		{
 			nombreCategoria : "CELULARES",
 			imagen : "img/tag2.png",
-		 	descripcion:"Tigo, Claro y Liberados."
+		 	descripcion:"Tigo, Claro y Liberados.",
+		 	banner: "img/cel.jpg"
 		},
 		{
 			nombreCategoria : "LINEA BLANCA",
 			imagen : "img/tag3.png",
-			descripcion:"Refrigeracion, Estufas, Lavadoras."
+			descripcion:"Refrigeracion, Estufas, Lavadoras.",
+			banner: "img/refri2.jpg"
 		},
 		{
 			nombreCategoria : "VIDEOJUEGOS",
 			imagen : "img/tag4.png",
-			descripcion:"Playstation, Xbox One, Pc Gaming."
+			descripcion:"Playstation, Xbox One, Pc Gaming.",
+			banner: "img/game.jpg"
 		},
 		{
 			nombreCategoria : "COMPUTACION",
 			imagen : "img/tag5.png",
-			descripcion:"Laptop, Desktop, Accesorios."
+			descripcion:"Laptop, Desktop, Accesorios.",
+			banner: "img/compu.jpg"
 		},
 		{
 			nombreCategoria : "AUDIO",
 			imagen : "img/tag6.png",
-			descripcion:"Audifonos, Fiestas, Bocinas Personales."
+			descripcion:"Audifonos, Fiestas, Bocinas Personales.",
+			banner: "img/audio1.png"
 		}
   
 	]
