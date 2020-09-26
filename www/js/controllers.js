@@ -16,7 +16,7 @@ var firebaseConfig = {
 angular.module('starter.controllers', [])
 
 //Controlador Para registro de usuario
-.controller("registroCtrl",function($scope, $state){
+.controller("registroCtrl",function($scope,$state){
 	//cerrar sesion del  usuario
 	firebase.auth().signOut().then(function(){
 	}).catch(function(error){
@@ -30,7 +30,7 @@ angular.module('starter.controllers', [])
 		//Crear usuario con la autenticacion
 		firebase.auth().createUserWithEmailAndPassword(user.email, user.contra).then(function a(y){
 			// Notificacion que se creo el usuario
-			swal("Tu usuario se ha creado correctamente");
+			swal("Tu cuenta se ha creado correctamente");
 			//obteber uid del ususario refistrado
 			$scope.uid = y.user.uid;
 			//Almacena el ususrio en la base de datos
@@ -40,35 +40,28 @@ angular.module('starter.controllers', [])
 				uid: $scope.uid
 			})
 		})
-
-		//cerrar sesion del  usuario
+		//Cerrar sesion del  usuario
 		firebase.auth().signOut().then(function(){
 		}).catch(function(error){
 			var mensaje = error.message;
 			console.log(mensaje);
 		})
-		//borra el contenido del formulario
+
+		//Borra el contenido del formulario
 		$scope.user = {};
-		//re direccion al login
+		//Re direccionar a la vista del LOGIN
 		$state.go("login");
 	}
 })
 
 
 //Controlador vista inicio
-.controller("loginCtrl",function($scope, $state){
-
-	//cerrar sesion del  usuario
-	firebase.auth().signOut().then(function(){
-	}).catch(function(error){
-		var mensaje = error.message;
-		console.log(mensaje);
-	})
+.controller("loginCtrl",function($scope,$state){
 	
 	$scope.Inicio = function(userL){
 		//Inicio de sesion con firebase
 		firebase.auth().signInWithEmailAndPassword(userL.email,userL.password).then(function b(x){
-			swal("BIENVENIDO");
+			swal("Bienvenido a tiendas Max");
 			$state.go("tab.dash")
 		}).catch(function(error){
 			var mensaje = error.message;
@@ -130,37 +123,37 @@ angular.module('starter.controllers', [])
 			nombreCategoria : "TV y VIDEO",
 			imagen : "img/tag1.png",
 			descripcion:"Televisores, Audio y Reproductores.",
-			banner: "img/tele.jpg"
+			banner: "img/Television.jpg"
 		},
 		{
 			nombreCategoria : "CELULARES",
 			imagen : "img/tag2.png",
 		 	descripcion:"Tigo, Claro y Liberados.",
-		 	banner: "img/cel.jpg"
+		 	banner: "img/Celulares.jpg"
 		},
 		{
 			nombreCategoria : "LINEA BLANCA",
 			imagen : "img/tag3.png",
 			descripcion:"Refrigeracion, Estufas, Lavadoras.",
-			banner: "img/refri2.jpg"
+			banner: "img/Refrigeradores.jpg"
 		},
 		{
 			nombreCategoria : "VIDEOJUEGOS",
 			imagen : "img/tag4.png",
 			descripcion:"Playstation, Xbox One, Pc Gaming.",
-			banner: "img/game.jpg"
+			banner: "img/VideoJuegos.jpg"
 		},
 		{
 			nombreCategoria : "COMPUTACION",
 			imagen : "img/tag5.png",
 			descripcion:"Laptop, Desktop, Accesorios.",
-			banner: "img/compu.jpg"
+			banner: "img/Computadoras.jpg"
 		},
 		{
 			nombreCategoria : "AUDIO",
 			imagen : "img/tag6.png",
 			descripcion:"Audifonos, Fiestas, Bocinas Personales.",
-			banner: "img/audio1.png"
+			banner: "img/AudioSonido.jpg"
 		}
   
 	]
