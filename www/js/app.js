@@ -96,6 +96,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 		}
 	})
 
+	.state("tab.profile", {
+		url: "/profile",
+		views: {
+			"tab-profile": {
+				templateUrl: "templates/profile.html",
+				controller: "profileCtrl"
+			}
+		}
+	})
+
 	.state("tab.favoritos",{
 		url: "/favoritos",
 		views: {

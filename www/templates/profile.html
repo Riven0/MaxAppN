@@ -1,0 +1,33 @@
+<ion-view view-title="Perfil">
+	<ion-content>
+
+		<div class="container PrevPhoto">
+			<div class="row">
+				<div class="col">
+
+
+					<!-- Preview Producto Image Contain -->
+					<div class="prevPhoto"></div>
+					<img ng-if="foto == undefined" class="previewProfile" id="img" alt="profile" src="img/profile.png">
+					<img ng-if="foto !=undefined" class="previewProfile" id="img" alt="profile" src="{{foto}}">
+					<!-- Upload Image Button -->
+					<div class="upimg btn">
+					    <input style="width:70%" type="file" name="foto" id="foto">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<button ng-click="saveChange()">Guardar Cambios</button>
+				</div>
+			</div>
+
+		</div>
+
+		<br>
+		<h4 class="text-center">Usuario: {{name}}</h4>
+		<h4 class="text-center">Correo: {{email}}</h4>
+		<h4 class="text-center">UID: {{uid}}</h4>
+	</ion-content>
+</ion-view>

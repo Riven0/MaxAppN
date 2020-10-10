@@ -234,3 +234,15 @@
 .espaciado{
 	padding-top: 20px;
 }
+
+/* Preview Profile Style */
+.previewProfile {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+}
+
+/* Center align preview profile photo */
+.PrevPhoto {
+	text-align: center;
+}

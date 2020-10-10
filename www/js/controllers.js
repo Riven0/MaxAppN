@@ -12,6 +12,7 @@ var firebaseConfig = {
 	firebase.initializeApp(firebaseConfig);
 	//base de datos
 	var database = firebase.database();
+	var storage = firebase.storage();
 
 angular.module('starter.controllers', [])
 
@@ -56,12 +57,24 @@ angular.module('starter.controllers', [])
 
 
 //Controlador vista inicio
-.controller("loginCtrl",function($scope,$state){
+.controller("loginCtrl",function($scope,$state,$rootScope){
+
+	$rootScope.uid;
+	$rootScope.user
 	
 	$scope.Inicio = function(userL){
 		//Inicio de sesion con firebase
 		firebase.auth().signInWithEmailAndPassword(userL.email,userL.password).then(function b(x){
 			swal("Bienvenido a tiendas Max");
+
+				//Get data user
+				firebase.auth().onAuthStateChanged(function(user) {
+					$rootScope.user = user;
+				  if (user) {
+				  	$rootScope.uid = user.uid;
+				  }
+				});
+
 			$state.go("tab.dash")
 		}).catch(function(error){
 			var mensaje = error.message;
@@ -105,6 +118,19 @@ angular.module('starter.controllers', [])
 
 //controlador vista de productos por categoria sin filtrar
 .controller('DashCtrl', function($scope,$rootScope, $state) {
+
+
+	$rootScope.name;
+	$rootScope.email;
+	$rootScope.foto;
+
+	firebase.database().ref("/users/"+$rootScope.uid).once("value").then(function(data){
+		$rootScope.name = data.val().nombre;
+		$rootScope.email = data.val().correo;
+		$rootScope.foto = data.val().foto;
+	})
+
+
 	$rootScope.listaProductos=[];
 	$rootScope.lista = [];
 	firebase.database().ref("/productos").on("value", function(p){
@@ -185,8 +211,65 @@ angular.module('starter.controllers', [])
 
 })
 
+
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
 	$scope.chat = Chats.get($stateParams.chatId);
+})
+
+.controller("profileCtrl", function($scope,$rootScope,$state){
+
+	var uploadFoto;
+	var foto;
+	var nav;
+	var file;
+	var name;
+
+	// Preload and Preview Image
+	$("#foto").on("change",function(){
+	    var uploadFoto = document.getElementById("foto").value;
+	    var foto       = document.getElementById("foto").files;
+	    var nav = window.URL || window.webkitURL;
+
+	    if(uploadFoto !=''){
+	        var type = foto[0].type;
+	        var name = foto[0].name;
+	        if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png'){
+	            $("#img").remove();
+	            //$(".delPhoto").addClass('notBlock');
+	            $('#foto').val('');
+	            return false;
+	        }else{
+	            $("#img").remove();
+	            //$(".delPhoto").removeClass('notBlock');
+	            var objeto_url = nav.createObjectURL(this.files[0]);
+	            file = this.files[0];
+	            $(".prevPhoto").append("<img class='previewProfile' id='img' src="+objeto_url+">");
+	            $(".upimg label").remove();
+	        }
+	    }else{
+	        alert("No selecciono foto");
+	        $("#img").remove();
+	    }
+	});
+
+	$scope.saveChange = function() {
+		// Crea una referencia al storage
+		var refStorage = storage.ref("Users/").child(file.name);
+		//Almacena la imagen dentro de la referencia del storage
+		var uploadTask = refStorage.put(file).then(function(result){
+			//Adquirir el URL y el storage
+			refStorage.getDownloadURL().then(function(result){
+				var enlace = result;
+
+				//Crear una referencia hacia el usuario
+				var database = firebase.database().ref().child("users/"+ $rootScope.uid);
+				database.update({
+					foto: enlace
+				})
+			})
+		})
+	}
+
 })
 
 .controller('AccountCtrl', function($scope) {
